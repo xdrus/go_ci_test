@@ -11,7 +11,7 @@ phases:
       # Build main binary
       - go build *.go
       - ls -al
-      # Change output location
+      # Change output location doesn't work?
       - mkdir output && export GOBIN="${CODEBUILD_SRC_DIR}/output" && go build
       - ls -alR ./output
 
