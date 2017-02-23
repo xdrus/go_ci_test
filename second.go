@@ -1,11 +1,11 @@
-package main
+package second
 
 import (
 	"fmt"
         "golang.org/x/text/language"
 )
 
-func second() {
+func main() {
 	ru := language.Make("ru")
 	fmt.Println(ru.Region())
 }

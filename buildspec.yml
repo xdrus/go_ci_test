@@ -1,11 +1,32 @@
 version: 0.1
 
+# Define project name accordong golang workplace standarts
+# You can overrive this value at project or build
+environment_variables:
+  plaintext:
+    PROJECT: "github.com/mobuter/codebuild"
+
+# Create standart go workspace layout
+# move the source code to a proper location
+# redefine GOBIN to put artifact to the CB working directory
+# download dependencies && build project
 phases:
   build:
     commands:
-      - go get -d -v
-      - go build -v
+      - |
+        export GOPATH="${CODEBUILD_SRC_DIR%src}/gohome" && 
+        export GOBIN="${CODEBUILD_SRC_DIR}/output" && 
+        mkdir -p "${GOPATH}/src/${PROJECT}" &&
+        mv ${CODEBUILD_SRC_DIR}/* ${GOPATH}/src/${PROJECT}/ &&
+        cd $GOPATH &&
+        go env && 
+        go get $PROJECT &&
+        go build $PROJECT
 
+# everything under ./output dir
+# please note if you compile a package
+# you need to move it here on a build stage
 artifacts:
   files:
-    - main
+    - '**/*'
+  base-directory: 'output'
