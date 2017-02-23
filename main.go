@@ -1,11 +1,25 @@
 package main
 
 import (
-	"fmt"
-        "golang.org/x/text/language"
+	"net/http"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 func main() {
-	ru := language.Make("ru")
-	fmt.Println(ru.Region())
+	// Echo instance
+	e := echo.New()
+
+	// Middleware
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
+	// Route => handler
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello, World!\n")
+	})
+
+	// Start server
+	e.Logger.Fatal(e.Start(":1323"))
 }
