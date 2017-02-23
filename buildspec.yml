@@ -3,7 +3,7 @@ version: 0.1
 phases:
   build:
     commands:
-      - go get -v
+      - go get -d -v
       - go build main.go
 
 artifacts:
