@@ -5,6 +5,8 @@ phases:
     commands:
       - go get -d -v
       - go build -v
+      - ls -la $GOPATH/bin
+      - ls -al
 
 artifacts:
   files:
