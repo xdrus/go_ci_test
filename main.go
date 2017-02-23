@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+        "golang.org/x/text/language"
+)
 
 func main() {
-	fmt.Printf("Hello, world.\n")
+	ru := language.Make("ru")
+	fmt.Println(ru.Region())
 }
