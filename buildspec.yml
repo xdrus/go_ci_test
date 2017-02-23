@@ -6,7 +6,7 @@ phases:
       - go get -d -v
       - go build -v
       - ls -la $GOPATH/bin
-      - ls -al
+      - ls -al ./src
 
 artifacts:
   files:
