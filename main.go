@@ -8,6 +8,8 @@ import (
 )
 
 func main() {
+	second()
+
 	// Echo instance
 	e := echo.New()
 
