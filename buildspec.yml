@@ -4,10 +4,19 @@ phases:
   build:
     commands:
       - go get -d -v
-      - go build -v
-      - ls -la $GOPATH/bin
-      - ls -al ./src
+      - ls -al
+      # Build src binary
+      - go build 
+      - ls -al
+      # Build main binary
+      - go build *.go
+      - ls -al
+      # Change output location
+      - mkdir output && export GOBIN="${CODEBUILD_SRC_DIR}/output" && go build
+      - ls -alR ./output
 
 artifacts:
   files:
     - main
+    - src
+    - 'output/**/*'
