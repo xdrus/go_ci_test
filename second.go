@@ -5,7 +5,7 @@ import (
         "golang.org/x/text/language"
 )
 
-func main() {
+func second() {
 	ru := language.Make("ru")
 	fmt.Println(ru.Region())
 }
