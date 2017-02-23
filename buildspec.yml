@@ -4,9 +4,9 @@ phases:
   build:
     commands:
       - go get -d -v
-      - export GOBIN="${CODEBUILD_SRC_DIR}/output" && go build *.go && ls -al && ls -al output 
+      - go build -v
 
 artifacts:
   files:
     - '**/*'
-  base-directory: 'output'
+  base-directory: 'main'
