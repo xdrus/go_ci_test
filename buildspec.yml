@@ -1,6 +1,10 @@
 version: 0.1
 
 phases:
+  install:
+    commands:
+      - echo $CODEBUILD_SOURCE_VERSION
+      - git log
   build:
     commands:
       - go build main.go
